@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>🎰 Casino Roulette</title>
+    <style>
+        body { background: #121212; color: white; font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .casino-box { background: #1e1e1e; padding: 30px; border-radius: 40px; border: 4px solid #d4af37; text-align: center; width: 350px; box-shadow: 0 0 30px rgba(0,0,0,0.8); }
+        
+        /* CSS İle Rulet Çarkı */
+        .wheel-container { position: relative; width: 250px; height: 250px; margin: 20px auto; border-radius: 50%; border: 10px solid #333; overflow: hidden; }
+        #rulet-carki { width: 100%; height: 100%; border-radius: 50%; transition: transform 4s cubic-bezier(0.1, 0, 0.1, 1); background: conic-gradient(
+            #27ae60 0deg 15deg, #c0392b 15deg 45deg, #2c3e50 45deg 75deg, #c0392b 75deg 105deg, #2c3e50 105deg 135deg, #c0392b 135deg 165deg, #2c3e50 165deg 195deg, #c0392b 195deg 225deg, #2c3e50 225deg 255deg, #c0392b 255deg 285deg, #2c3e50 285deg 315deg, #c0392b 315deg 345deg, #2c3e50 345deg 360deg
+        ); }
+        .center-node { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 40px; height: 40px; background: #444; border: 3px solid #d4af37; border-radius: 50%; z-index: 5; }
+        .pointer { position: absolute; top: -10px; left: 50%; transform: translateX(-50%); width: 0; height: 0; border-left: 10px solid transparent; border-right: 10px solid transparent; border-top: 25px solid #f1c40f; z-index: 10; }
+
+        input { padding: 10px; border-radius: 8px; border: 1px solid #d4af37; background: #333; color: gold; width: 80px; text-align: center; font-size: 18px; margin-bottom: 20px; }
+        .btns { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        button { padding: 15px; border: none; border-radius: 10px; color: white; font-weight: bold; cursor: pointer; transition: 0.2s; }
+        .red { background: #c0392b; }
+        .black { background: #2c3e50; }
+        .green { background: #27ae60; grid-column: span 2; }
+        button:disabled { opacity: 0.4; }
+        #mesaj { margin-top: 20px; font-weight: bold; min-height: 24px; }
+    </style>
+</head>
+<body>
+
+<div class="casino-box">
+    <div style="font-size: 24px; color: #f1c40f;">Bakiye: <span id="puan">100</span></div>
+    
+    <div class="wheel-container">
+        <div class="pointer"></div>
+        <div class="center-node"></div>
+        <div id="rulet-carki"></div>
+    </div>
+
+    <div>Bahis: <input type="number" id="bahisMiktari" value="10"></div>
+    <div class="btns">
+        <button class="red" onclick="bahisYap('kirmizi')">KIRMIZI</button>
+        <button class="black" onclick="bahisYap('siyah')">SİYAH</button>
+        <button class="green" onclick="bahisYap('yesil')">YEŞİL (35x)</button>
+    </div>
+    <div id="mesaj">Bahis yapın!</div>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
